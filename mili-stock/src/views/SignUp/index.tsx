@@ -21,7 +21,7 @@ export default function SignUp() {
             "userAddressDetail": "서초구"
         }
         axios
-            .post('https://8080-taeyon998-milistockback-1jw7vs2iquc.ws-us102.gitpod.io/api/auth/signUp', data)
+            .post('https://8080-taeyon998-milistockback-kl9y78dr85b.ws-us102.gitpod.io/api/auth/signUp', data)
             .then((response) => {
                 setRequestResult('Success!');
             })
