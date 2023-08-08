@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from "axios"
+import { TextField } from '@mui/material';
 
 export default function SignUp() {
     const [requestResult, setRequestResult] = useState<string>('');
@@ -21,7 +22,7 @@ export default function SignUp() {
             "userAddressDetail": "서초구"
         }
         axios
-            .post('https://8080-taeyon998-milistockback-kl9y78dr85b.ws-us102.gitpod.io/api/auth/signUp', data)
+            .post('https://8080-taeyon998-milistockback-u79iumy3s7k.ws-us102.gitpod.io/api/auth/signUp', data)
             .then((response) => {
                 setRequestResult('Success!');
             })
@@ -31,6 +32,7 @@ export default function SignUp() {
     }
     return (
         <div>
+            <TextField id="standard-basic" label="Standard" variant="standard" />
             <h3>{requestResult}</h3>
             <button onClick={() => signUpHandler()}>회원가입</button>
         </div>

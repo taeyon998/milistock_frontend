@@ -6,6 +6,7 @@
 
 tasks:
   - init: npm install react
+    command: npm start
 
 ports:
   - port: 3000
