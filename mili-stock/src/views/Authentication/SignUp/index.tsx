@@ -3,7 +3,13 @@ import axios from "axios"
 import { Box, TextField, CardContent, Card, CardActions, Button } from '@mui/material';
 
 export default function SignUp() {
-    const [requestResult, setRequestResult] = useState<string>('');
+    const [userEmail, setUserEmail] = useState<string>('');
+    const [userPassword, setUserPassword] = useState<string>('');
+    const [userPasswordCheck, setUserPasswordCheck] = useState<string>('');
+    const [userNickname, setUserNickname] = useState<string>('');
+    const [userPhoneNumber, setUserPhoneNumber] = useState<string>('');
+    const [userAddress, setUserAddress] = useState<string>('');
+    const [userAddressDetail, setUserAddressDetail] = useState<string>('');
 
     const signUpHandler = () => {
         const data = {
@@ -23,12 +29,8 @@ export default function SignUp() {
         }
         axios
             .post('https://8080-taeyon998-milistockback-u79iumy3s7k.ws-us102.gitpod.io/api/auth/signUp', data)
-            .then((response) => {
-                setRequestResult('Success!');
-            })
-            .catch((error) => {
-                setRequestResult('Failed!');
-            })
+            .then((response) => {})
+            .catch((error) => {})
     }
     return (
         <Card sx={{ minWidth: 275, maxWidth: "50vw" }}>
@@ -41,7 +43,7 @@ export default function SignUp() {
                     <TextField fullWidth label="휴대폰 번호" variant="standard" />
                     <TextField fullWidth label="주소" variant="standard" />
                     <TextField fullWidth label="상세주소" variant="standard" />
-                    <h3>{requestResult}</h3>        
+                      
                     
                 </Box>
             </CardContent>
