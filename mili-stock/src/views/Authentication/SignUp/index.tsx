@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from "axios"
-import { TextField } from '@mui/material';
+import { Box, TextField, CardContent, Card, CardActions, Button } from '@mui/material';
 
 export default function SignUp() {
     const [requestResult, setRequestResult] = useState<string>('');
@@ -31,10 +31,23 @@ export default function SignUp() {
             })
     }
     return (
-        <div>
-            <TextField id="standard-basic" label="Standard" variant="standard" />
-            <h3>{requestResult}</h3>
-            <button onClick={() => signUpHandler()}>회원가입</button>
-        </div>
+        <Card sx={{ minWidth: 275, maxWidth: "50vw" }}>
+            <CardContent>
+                <Box>
+                    <TextField fullWidth label="이메일 주소" type="email" variant="standard" />
+                    <TextField fullWidth label="비밀번호" type="password" variant="standard" />
+                    <TextField fullWidth label="비밀번호 확인" type="password" variant="standard" />
+                    <TextField fullWidth label="닉네임" variant="standard" />
+                    <TextField fullWidth label="휴대폰 번호" variant="standard" />
+                    <TextField fullWidth label="주소" variant="standard" />
+                    <TextField fullWidth label="상세주소" variant="standard" />
+                    <h3>{requestResult}</h3>        
+                    
+                </Box>
+            </CardContent>
+            <CardActions>
+                <Button fullWidth onClick={() => signUpHandler()} variant="contained">회원가입</Button>    
+            </CardActions>
+        </Card>
     )
 }
