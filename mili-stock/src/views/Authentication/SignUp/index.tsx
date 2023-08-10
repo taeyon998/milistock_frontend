@@ -13,22 +13,22 @@ export default function SignUp() {
 
     const signUpHandler = () => {
         const data = {
-            "userEmail": "taeyon@naver.com",
+            userEmail,
 
-            "userPassword": "awer1234",
+            userPassword,
 
-            "userPasswordCheck": "awer1234",
+            userPasswordCheck,
 
-            "userNickname": "Hogwart Kim",
+            userNickname,
 
-            "userPhoneNumber": "010-1111-1111",
+            userPhoneNumber,
 
-            "userAddress": "서울시",
+            userAddress,
 
-            "userAddressDetail": "서초구"
+            userAddressDetail
         }
         axios
-            .post('https://8080-taeyon998-milistockback-u79iumy3s7k.ws-us102.gitpod.io/api/auth/signUp', data)
+            .post('https://8080-taeyon998-milistockback-0po8sqohyzw.ws-us102.gitpod.io/api/auth/signUp', data)
             .then((response) => {})
             .catch((error) => {})
     }
@@ -36,15 +36,14 @@ export default function SignUp() {
         <Card sx={{ minWidth: 275, maxWidth: "50vw" }}>
             <CardContent>
                 <Box>
-                    <TextField fullWidth label="이메일 주소" type="email" variant="standard" />
-                    <TextField fullWidth label="비밀번호" type="password" variant="standard" />
-                    <TextField fullWidth label="비밀번호 확인" type="password" variant="standard" />
-                    <TextField fullWidth label="닉네임" variant="standard" />
-                    <TextField fullWidth label="휴대폰 번호" variant="standard" />
-                    <TextField fullWidth label="주소" variant="standard" />
-                    <TextField fullWidth label="상세주소" variant="standard" />
-                      
-                    
+                    <TextField fullWidth label="이메일 주소" type="email" variant="standard" onChange={(e)=>setUserEmail(e.target.value)}/>
+                    <TextField fullWidth label="비밀번호" type="password" variant="standard" onChange={(e)=>setUserPassword(e.target.value)}/>
+                    <TextField fullWidth label="비밀번호 확인" type="password" variant="standard" onChange={(e)=>setUserPasswordCheck(e.target.value)}/>
+                    <TextField fullWidth label="닉네임" variant="standard" onChange={(e)=>setUserNickname(e.target.value)}/>
+                    <TextField fullWidth label="휴대폰 번호" variant="standard" onChange={(e)=>setUserPhoneNumber(e.target.value)}/>
+                    <TextField fullWidth label="주소" variant="standard" onChange={(e)=>setUserAddress(e.target.value)}/>
+                    <TextField fullWidth label="상세주소" variant="standard" onChange={(e)=>setUserAddressDetail(e.target.value)}/>                     
+                
                 </Box>
             </CardContent>
             <CardActions>
