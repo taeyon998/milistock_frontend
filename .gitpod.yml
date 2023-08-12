@@ -5,9 +5,11 @@
 # Learn more from ready-to-use templates: https://www.gitpod.io/docs/introduction/getting-started/quickstart
 
 tasks:
-  - init: npm install react
-    command: npm start
+  - before: cd mili_stock
+    init: npm install react
+    command: |      
       npm install @mui/material @emotion/react @emotion/styled 
+      npm start
 
 ports:
   - port: 3000
