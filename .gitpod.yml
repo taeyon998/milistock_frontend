@@ -5,7 +5,7 @@
 # Learn more from ready-to-use templates: https://www.gitpod.io/docs/introduction/getting-started/quickstart
 
 tasks:
-  - before: cd mili_stock
+  - before: cd mili-stock
     init: npm install react
     command: |      
       npm install @mui/material @emotion/react @emotion/styled 
