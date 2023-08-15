@@ -9,7 +9,8 @@ tasks:
     init: npm install react
     command: |      
       npm install @mui/material @emotion/react @emotion/styled
-      npm install react-cookie --force 
+      npm install react-cookie --force
+      npm install zustand –force
       npm start
 
 ports:
