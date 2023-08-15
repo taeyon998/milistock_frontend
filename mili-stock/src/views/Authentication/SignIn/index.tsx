@@ -21,7 +21,7 @@ export default function SignIn() {
             .post("https://8080-taeyon998-milistockback-yyhxg5y57kf.ws-us103.gitpod.io/api/auth/signIn", data)
             .then((response) => {
                 const responseData = response.data;
-                console.log(response.data)
+                console.log(responseData.data)
                 if (!response.data.result){
                     alert('로그인에 실패했습니다.');
                     return;

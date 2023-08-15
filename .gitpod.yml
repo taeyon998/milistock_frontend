@@ -8,7 +8,8 @@ tasks:
   - before: cd mili-stock
     init: npm install react
     command: |      
-      npm install @mui/material @emotion/react @emotion/styled 
+      npm install @mui/material @emotion/react @emotion/styled
+      npm install react-cookie --force 
       npm start
 
 ports:
