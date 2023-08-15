@@ -1,10 +1,13 @@
 import { Box, Button, Card, CardActions, CardContent, TextField } from '@mui/material';
 import axios from 'axios';
 import React, { useState } from 'react'
+import { useCookies } from 'react-cookie';
 
 export default function SignIn() {
     const [userEmail, setUserEmail] = useState<string>('');
     const [userPassword, setUserPassword] = useState<string>('');
+
+    const [cookies, setCookies] = useCookies();
 
     // POST 로그인 정보 to backend
     const signInHandler = () => {
@@ -27,6 +30,10 @@ export default function SignIn() {
                     return;
                 }
                 const {token, exprTime, user} = responseData.data;
+                const expires = new Date();
+                expires.setMilliseconds(expires.getMilliseconds + exprTime);
+
+                setCookies('token', token, {expires});
             })
             .catch((error) => {
                 alert('로그인에 실패했습니다.');
