@@ -3,30 +3,30 @@ import axios from 'axios';
 import React, { useState } from 'react'
 
 export default function SignIn() {
-    const [email, setUserEmail] = useState<string>('');
-    const [password, setUserPassword] = useState<string>('');
+    const [userEmail, setUserEmail] = useState<string>('');
+    const [userPassword, setUserPassword] = useState<string>('');
 
     // POST 로그인 정보 to backend
     const signInHandler = () => {
-        if (email.length === 0 || password.length === 0) {
+        if (userEmail.length === 0 || userPassword.length === 0) {
             alert('이메일과 비밀번호를 입력하세요.');
             return;
         }
 
         const data = {
-            email,
-            password
+            userEmail,
+            userPassword
         }
         axios
             .post("https://8080-taeyon998-milistockback-yyhxg5y57kf.ws-us103.gitpod.io/api/auth/signIn", data)
             .then((response) => {
                 const responseData = response.data;
-                console.log(response)
+                console.log(response.data)
                 if (!response.data.result){
                     alert('로그인에 실패했습니다.');
                     return;
                 }
-                // console.log(response.data);
+                const {token, exprTime, user} = responseData.data;
             })
             .catch((error) => {
                 alert('로그인에 실패했습니다.');
