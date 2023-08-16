@@ -2,12 +2,14 @@ import { Box, Button, Card, CardActions, CardContent, TextField } from '@mui/mat
 import axios from 'axios';
 import React, { useState } from 'react'
 import { useCookies } from 'react-cookie';
+import { useUserStore } from '../stores';
 
 export default function SignIn() {
     const [userEmail, setUserEmail] = useState<string>('');
     const [userPassword, setUserPassword] = useState<string>('');
 
     const [cookies, setCookies] = useCookies();
+    const {setUser} = useUserStore();
 
     // POST 로그인 정보 to backend
     const signInHandler = () => {
@@ -21,7 +23,7 @@ export default function SignIn() {
             userPassword
         }
         axios
-            .post("https://8080-taeyon998-milistockback-yyhxg5y57kf.ws-us103.gitpod.io/api/auth/signIn", data)
+            .post("https://8080-taeyon998-milistockback-k69f7818zph.ws-us103.gitpod.io/api/auth/signIn", data)
             .then((response) => {
                 const responseData = response.data;
                 console.log(responseData.data)
@@ -29,11 +31,14 @@ export default function SignIn() {
                     alert('로그인에 실패했습니다.');
                     return;
                 }
+
+                // Make Cookie
                 const {token, exprTime, user} = responseData.data;
                 const expires = new Date();
                 expires.setMilliseconds(expires.getMilliseconds + exprTime);
 
                 setCookies('token', token, {expires});
+                setUser(user);
             })
             .catch((error) => {
                 alert('로그인에 실패했습니다.');
@@ -41,6 +46,7 @@ export default function SignIn() {
     };
     return (
         <Card sx={{ minWidth: 275, maxWidth: "50vw" }}>
+            { user != null && (<>{user.userNickname}</>)}
             <CardContent>
                 <Box>
                     <TextField fullWidth label="이메일 주소" type="email" variant="standard" onChange={(e) => setUserEmail(e.target.value)} />
