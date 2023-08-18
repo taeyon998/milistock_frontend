@@ -9,7 +9,7 @@ export default function SignIn() {
     const [userPassword, setUserPassword] = useState<string>('');
 
     const [cookies, setCookies] = useCookies();
-    const {setUser} = useUserStore();
+    const {user, setUser} = useUserStore();
 
     // POST 로그인 정보 to backend
     const signInHandler = () => {
@@ -44,6 +44,8 @@ export default function SignIn() {
                 alert('로그인에 실패했습니다.');
             });
     };
+
+    // 로그인 UI
     return (
         <Card sx={{ minWidth: 275, maxWidth: "50vw" }}>
             { user != null && (<>{user.userNickname}</>)}
