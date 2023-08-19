@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
 import axios from "axios"
-import { Box, TextField, CardContent, Card, CardActions, Button } from '@mui/material';
+import { Box, TextField, CardContent, Card, CardActions, Button, Typography } from '@mui/material';
 
-export default function SignUp() {
+interface Props {
+    setAuthView: (authView: boolean) => void,
+}
+
+export default function SignUp(props: Props) { // parameter "props", which must be object that has function setAuthView
     const [userEmail, setUserEmail] = useState<string>('');
     const [userPassword, setUserPassword] = useState<string>('');
     const [userPasswordCheck, setUserPasswordCheck] = useState<string>('');
@@ -10,6 +14,8 @@ export default function SignUp() {
     const [userPhoneNumber, setUserPhoneNumber] = useState<string>('');
     const [userAddress, setUserAddress] = useState<string>('');
     const [userAddressDetail, setUserAddressDetail] = useState<string>('');
+
+    const { setAuthView } = props;
 
     const signUpHandler = () => {
         const data = {
@@ -33,7 +39,10 @@ export default function SignUp() {
             .catch((error) => {})
     }
     return (
-        <Card sx={{ minWidth: 275, maxWidth: "50vw" }}>
+        <Card sx={{ minWidth: 275, maxWidth: "50vw", padding: 5 }}>
+            <Box>
+                <Typography variant='h5'>회원가입</Typography>
+            </Box>
             <CardContent>
                 <Box>
                     <TextField fullWidth label="이메일 주소" type="email" variant="standard" onChange={(e)=>setUserEmail(e.target.value)}/>
@@ -49,6 +58,11 @@ export default function SignUp() {
             <CardActions>
                 <Button fullWidth onClick={() => signUpHandler()} variant="contained">회원가입</Button>    
             </CardActions>
+            <Box component ='div' display='flex' mt={2}>
+                <Typography ml={1} onClick={() => setAuthView(false)}>
+                    로그인
+                </Typography>
+            </Box>
         </Card>
     )
 }

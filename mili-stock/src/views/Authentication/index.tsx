@@ -10,10 +10,9 @@ export default function Authentication() {
   return (
     <>
       <Box display='flex'>
-        {authView ? (<SignUp />) : (<SignIn />)}
         
-
-        
+        {authView ? (<SignUp setAuthView={setAuthView}/>) : (<SignIn setAuthView={setAuthView}/>)}
+                
       </Box>
     </>
   )
